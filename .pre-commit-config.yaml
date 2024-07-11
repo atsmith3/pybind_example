@@ -12,7 +12,7 @@ default_stages: [commit]
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.5.0
+      rev: v4.6.0
       hooks:
           - id: trailing-whitespace
           - id: end-of-file-fixer
@@ -29,16 +29,17 @@ repos:
           - id: requirements-txt-fixer
     - repo: local
       hooks:
-          - id: gem5-style-checker
-            name: gem5 style checker
-            entry: util/git-pre-commit.py
+          - id: clang-format
+            name: clang-format
+            entry: clang-format -i
+            files: \.(cpp|hpp|h|tcc|tpp|cc|hh|yy|ll)$
             always_run: true
-            exclude: .*
+            description: clang-format hook
             language: system
-            description: The gem5 style checker hook.
-          - id: gem5-commit-msg-checker
-            name: gem5 commit msg checker
-            entry: util/git-commit-msg
-            language: system
-            stages: [commit-msg]
-            description: The gem5 commit message checker hook.
+          - id: yapf
+            name: yapf
+            entry: yapf -i
+            files: \.(py)$
+            always_run: true
+            description: yapf hook
+            language: python
