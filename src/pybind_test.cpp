@@ -28,7 +28,6 @@ PYBIND11_MODULE(pybind_test, m) {
 #else
 int main(int argc, char **argv) {
   std::vector<std::string> l = {"Hello"
-
                                 "World"};
   example(l);
 }

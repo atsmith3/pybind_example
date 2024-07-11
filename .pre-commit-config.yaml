@@ -33,13 +33,19 @@ repos:
             name: clang-format
             entry: clang-format
             files: \.(cpp|hpp|h|tcc|tpp|cc|hh|yy|ll)$
-            always_run: true
+            #always_run: true
+            args: ["-i"]
+            require_serial: false
             description: clang-format hook
             language: system
           - id: yapf
             name: yapf
             entry: yapf
-            files: \.(py)$
-            always_run: true
-            description: yapf hook
             language: python
+            'types': [python]
+            args: ["-i"]
+            require_serial: false
+            #always_run: true
+            additional_dependencies: []
+            minimum_pre_commit_version: '0'
+            description: yapf hook

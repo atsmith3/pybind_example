@@ -7,3 +7,5 @@ sys.path.append(
 import pybind_test
 
 pybind_test.example(["Hello", "World"])
+pybind_test.example(
+    ["According", "to", "all", "known", "laws", "of", "aviation"])
