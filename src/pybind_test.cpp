@@ -17,6 +17,8 @@ void example(std::vector<std::string> my_list) {
   }
 }
 
+void hello(std::vector < std::string >> a) { return; }
+
 #ifndef UNIT_TEST
 PYBIND11_MODULE(pybind_test, m) {
   m.doc() = "Example Pybind 11 plugin";

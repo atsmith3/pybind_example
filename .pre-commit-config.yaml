@@ -31,14 +31,14 @@ repos:
       hooks:
           - id: clang-format
             name: clang-format
-            entry: clang-format -i
+            entry: clang-format
             files: \.(cpp|hpp|h|tcc|tpp|cc|hh|yy|ll)$
             always_run: true
             description: clang-format hook
             language: system
           - id: yapf
             name: yapf
-            entry: yapf -i
+            entry: yapf
             files: \.(py)$
             always_run: true
             description: yapf hook
