@@ -11,24 +11,30 @@
 
 #endif
 
-void example(std::vector<std::string> my_list) {
-  for (auto s : my_list) {
-    std::cout << s << std::endl;
-  }
-}
+class Foo {
+private:
+  int _a;
 
-void hello(std::vector < std::string >> a) { return; }
+public:
+  Foo(int a = 0) : _a(a){};
+  ~Foo(){};
+
+  void set_a(const int new_a) { this->_a = new_a; }
+  int get_a() const { return this->_a; }
+};
 
 #ifndef UNIT_TEST
 PYBIND11_MODULE(pybind_test, m) {
-  m.doc() = "Example Pybind 11 plugin";
-  m.def("example", &example,
-        "A function that prints a list of strings to stdout");
+  pybind11::class_<Foo>(m, "Foo")
+      .def(pybind11::init<int>())
+      .def("set_a", &Foo::set_a)
+      .def("get_a", &Foo::get_a);
 }
 #else
 int main(int argc, char **argv) {
-  std::vector<std::string> l = {"Hello"
-                                "World"};
-  example(l);
+  Foo *test = new Foo(10);
+  std::cout << test->get_a() << std::endl;
+  test->set_a(20);
+  std::cout << test->get_a() << std::endl;
 }
 #endif

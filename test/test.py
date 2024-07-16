@@ -6,6 +6,24 @@ sys.path.append(
 
 import pybind_test
 
-pybind_test.example(["Hello", "World"])
-pybind_test.example(
-    ["According", "to", "all", "known", "laws", "of", "aviation"])
+
+class PyTest():
+
+    def __init__(self, default=0):
+        self.pb = pybind_test.Foo(default)
+
+    def set_a(self, a):
+        print("Before SetA")
+        self.pb.set_a(a)
+        print("After SetA")
+
+    def get_a(self):
+        print("Before GetA")
+        ret = self.pb.get_a()
+        print("After GetA")
+        return ret
+
+
+p = PyTest(15)
+p.set_a(25)
+print("{}".format(p.get_a()))
